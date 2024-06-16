@@ -1,0 +1,30 @@
+<LoginScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            text: "Login"
+        
+        TextInput:
+            id: username_input
+            hint_text: 'Usuário'
+            multiline: False
+            on_text: root.remove_spaces(self)
+        
+        TextInput:
+            id: password_input
+            hint_text: 'Senha'
+            multiline: False
+            password: True
+            on_text: root.remove_spaces(self)
+        
+        Button:
+            text: 'Login'
+            on_press: root.login(root)
+
+        Button:
+            text: 'Voltar'
+            on_press: root.change_screen('start')
+        
+        Label:
+            id: message_label

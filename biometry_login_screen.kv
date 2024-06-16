@@ -1,0 +1,15 @@
+<BiometryLoginScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+
+        Button:
+            text: 'Voltar'
+            on_press: root.change_screen('start')
+
+        Label: 
+            id: status_label
+            text: ''
+
+        Button:
+            text: 'Login com biometria'
+            on_press: root.fingerprint_login()

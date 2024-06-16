@@ -1,0 +1,25 @@
+# KV file (register_biometry_screen.kv)
+<RegisterBiometryScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+
+        Label:
+            id: status_label
+            text: "Aguardando..."
+            font_size: '20sp'
+            size_hint_y: None
+            height: self.texture_size[1] + 20
+
+        Button:
+            text: "Registrar Biometria"
+            size_hint_y: None
+            height: 50
+            on_press: root.register_fingerprint()
+        
+        Button:
+            text: "Voltar"
+            size_hint_y: None
+            height: 50
+            on_press: root.change_screen('login')

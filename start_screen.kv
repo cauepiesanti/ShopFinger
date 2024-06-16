@@ -1,0 +1,23 @@
+<StartScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            text: "Selecione a opção"
+        
+        Button:
+            text: 'Login com biometria'
+            on_press: root.change_screen('biometry_login')
+
+        Button:
+            text: 'Login caueps'
+            #on_press: root.change_screen('mainMenu')
+            on_press: root.login_caueps()
+        
+        Button:
+            text: 'Cadastrar biometria'
+            on_press: root.change_screen('login')
+        
+        Label:
+            id: message_label
+

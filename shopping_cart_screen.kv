@@ -1,0 +1,247 @@
+<ShoppingCartScreen>:
+    FloatLayout:
+        id: main_layout
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, 0.8
+            pos_hint: {'top': 0.9}
+
+            BoxLayout:
+                size_hint: 1, 0.1
+                orientation: 'vertical'
+                Label:
+                    text: 'Lista de Compras\n\n'
+                    font_size: 30
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            # TABELA
+            FloatLayout:
+                size_hint: 1, 0.20
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint: 1, 1
+                    height: self.minimum_height
+                    pos_hint: {'x': 0, 'y': 0}
+
+                    TextInput:
+                        readonly: True
+                        multiline: False
+                        text: 'Produto'
+                        font_size: 30
+                        pos_hint: {'center_x': 0, 'center_y': 0.5}
+
+                    TextInput:
+                        readonly: True
+                        multiline: False
+                        text: 'Quantidade'
+                        font_size: 30
+                        pos_hint: {'center_x': 0, 'center_y': 0.5}
+
+                    TextInput:
+                        readonly: True
+                        multiline: False
+                        text: 'Preço unitário'
+                        font_size: 30
+                        pos_hint: {'center_x': 0, 'center_y': 0.5}
+
+                    TextInput:
+                        readonly: True
+                        multiline: False
+                        text: 'Preço total'
+                        font_size: 30
+                        pos_hint: {'center_x': 1, 'center_y': 0.5}
+
+            # Produto 1
+            FloatLayout:
+                id: product_1_row
+                size_hint: 1, 0.20
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint: 1, 1
+                    height: self.minimum_height
+                    pos_hint: {'x': 0, 'y': 0}
+
+                    TextInput:
+                        id: nome_produto_1
+                        readonly: True
+                        multiline: False
+                        text: ''
+                        font_size: 30
+
+                    TextInput:
+                        id: qtd_produto_1
+                        text: '0'
+                        font_size: 30
+                        readonly: True
+                        multiline: False 
+
+                    TextInput:
+                        id: preco_produto_1
+                        readonly: True
+                        multiline: False
+                        text: ''
+                        font_size: 30
+
+                    TextInput:
+                        id: preco_total_produto_1
+                        readonly: True
+                        multiline: False
+                        text: '0'
+                        font_size: 30
+
+            # Produto 2
+            FloatLayout:
+                id: product_2_row
+                size_hint: 1, 0.20
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint: 1, 1
+                    height: self.minimum_height
+                    pos_hint: {'x': 0, 'y': 0}
+
+                    TextInput:
+                        id: nome_produto_2
+                        readonly: True
+                        multiline: False
+                        text: ''
+                        font_size: 30
+
+                    TextInput:
+                        id: qtd_produto_2
+                        text: '0'
+                        font_size: 30
+                        readonly: True
+                        multiline: False 
+
+                    TextInput:
+                        id: preco_produto_2
+                        readonly: True
+                        multiline: False
+                        text: ''
+                        font_size: 30
+
+                    TextInput:
+                        id: preco_total_produto_2
+                        readonly: True
+                        multiline: False
+                        text: '0'
+                        font_size: 30
+
+            # Produto 3
+            FloatLayout:
+                id: product_3_row
+                size_hint: 1, 0.20
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint: 1, 1
+                    height: self.minimum_height
+                    pos_hint: {'x': 0, 'y': 0}
+
+                    TextInput:
+                        id: nome_produto_3
+                        readonly: True
+                        multiline: False
+                        text: ''
+                        font_size: 30
+
+                    TextInput:
+                        id: qtd_produto_3
+                        text: '0'
+                        font_size: 30
+                        readonly: True
+                        multiline: False 
+
+                    TextInput:
+                        id: preco_produto_3
+                        readonly: True
+                        multiline: False
+                        text: ''
+                        font_size: 30
+
+                    TextInput:
+                        id: preco_total_produto_3
+                        readonly: True
+                        multiline: False
+                        text: '0'
+                        font_size: 30
+
+            # Valor total
+            FloatLayout:
+                id: total_value_row
+                size_hint: 1, 0.20
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint: 1, 1
+                    height: self.minimum_height
+                    pos_hint: {'x': 0, 'y': 0}
+
+                    TextInput:
+                        readonly: True
+                        multiline: False
+                        text: 'Valor total'
+                        size_hint: 0.75,1
+                        font_size: 30
+
+                    TextInput:
+                        id: preco_total
+                        size_hint: 0.25,1
+                        readonly: True
+                        multiline: False
+                        text: '0'
+                        font_size: 30
+
+            BoxLayout:
+                size_hint: 1, 0.6
+                orientation: 'vertical'
+                Button:
+                    id: confrim_purchase_button
+                    text: 'Confirmar compra'
+                    size_hint: 1, .33
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    on_press: root.confirm_purchase()
+
+                Button:
+                    id: clear_cart_button
+                    text: 'Limpar carrinho'
+                    size_hint: 1, .33
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    on_press: root.clear_shopping_cart()
+
+                Button:
+                    id: back_button
+                    text: 'Voltar'
+                    size_hint: 1, .33
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    on_press: root.change_screen('mainMenu')
+
+            BoxLayout:
+                size_hint: 1, 0.1
+                orientation: 'vertical'
+                Label:
+                    id: status_label
+                    text: 'Status Label'
+                    font_size: 30
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            pos_hint: {'top': 1}
+
+            Button:
+                background_normal: 'images/ajuda.png'
+                background_color: 0, 0, 0, 0
+                text: 'Ajuda'
+                size_hint: .1, 1
+
+            Button:
+                id: balance_button
+                text: 'Saldo'
+                size_hint: .1, 1
+                background_normal: 'images/saldo.png'
+                background_color: 0, 0, 0, 0

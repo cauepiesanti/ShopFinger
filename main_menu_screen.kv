@@ -1,0 +1,305 @@
+<MainMenuScreen>:
+    FloatLayout:
+        id: main_layout
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, 0.8
+            pos_hint: {'top': 0.9}
+
+            # TABELA
+            FloatLayout:
+                size_hint: 1, 0.25
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint: 1, 1
+                    height: self.minimum_height
+                    pos_hint: {'x': 0, 'y': 0}
+
+                    TextInput:
+                        readonly: True
+                        multiline: False
+                        text: 'Produto'
+                        font_size: 30
+                        #size_hint: 0.22, .33
+                        pos_hint: {'center_x':0 , 'center_y':0.5}
+
+                    TextInput:
+                        readonly: True
+                        multiline: False
+                        text: 'Preço unitário'
+                        font_size: 30
+                        #size_hint: 0.22, .33
+                        pos_hint: {'center_x':0 , 'center_y':0.5}
+                    
+
+                    TextInput:
+                        readonly: True
+                        multiline: False
+                        text: 'Quantidade'
+                        font_size: 30
+                        size_hint: 0.9, 1
+                        pos_hint: {'center_x':0 , 'center_y':0.5}
+
+                        
+                    TextInput:
+                        readonly: True
+                        multiline: False
+                        text: 'Preço total'
+                        font_size: 30
+                        #size_hint: 0.22, .33
+                        pos_hint: {'center_x':1 , 'center_y':0.5}
+
+             # Produto 1
+            FloatLayout:
+                size_hint: 1, 0.25
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint: 1, 1
+                    height: self.minimum_height
+                    pos_hint: {'x': 0, 'y': 0}
+
+                    TextInput:
+                        id: nome_produto_1
+                        readonly: True
+                        multiline: False
+                        text: ''
+                        font_size: 30
+                        #size_hint: 0.22, .33
+                        #pos_hint: {'center_x':0 , 'center_y':0.5}
+
+                    TextInput:
+                        id: preco_produto_1
+                        readonly: True
+                        multiline: False
+                        text: ''
+                        font_size: 30
+                        #size_hint: 0.22, .33
+                        #pos_hint: {'center_x':0 , 'center_y':0.5}
+                    
+
+                    Button:
+                        text: '-'
+                        size_hint: 0.3, 1
+                        #pos_hint: {'x': 0, 'y': 0.25}
+                        on_press: root.decrement_qtd(1)
+                        
+                    TextInput:
+                        id: qtd_produto_1
+                        text: '0'
+                        font_size: 30
+                        readonly: True
+                        size_hint: 0.3, 1
+                        #pos_hint: {'x': 0, 'y': 0.25}
+                        multiline: False
+
+                    Button:
+                        text: '+'
+                        size_hint: 0.3, 1
+                        #pos_hint: {'x': 0, 'y': 0.25}
+                        on_press: root.increment_qtd(1)
+
+                        
+                    TextInput:
+                        id: preco_total_produto_1
+                        readonly: True
+                        multiline: False
+                        text: '0'
+                        font_size: 30
+                        #size_hint: 0.22, .33
+                        #pos_hint: {'center_x':1 , 'center_y':0.5}
+            # Produto 2
+            FloatLayout:
+                size_hint: 1, 0.25
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint: 1, 1
+                    height: self.minimum_height
+                    pos_hint: {'x': 0, 'y': 0}
+
+                    TextInput:
+                        id: nome_produto_2
+                        readonly: True
+                        multiline: False
+                        text: ''
+                        font_size: 30
+                        #size_hint: 0.22, .33
+                        #pos_hint: {'center_x':0 , 'center_y':0.5}
+
+                    TextInput:
+                        id: preco_produto_2
+                        readonly: True
+                        multiline: False
+                        text: ''
+                        font_size: 30
+                        #size_hint: 0.22, .33
+                        #pos_hint: {'center_x':0 , 'center_y':0.5}
+                    
+
+                    Button:
+                        text: '-'
+                        size_hint: 0.3, 1
+                        #pos_hint: {'x': 0, 'y': 0.25}
+                        on_press: root.decrement_qtd(2)
+                        
+                    TextInput:
+                        id: qtd_produto_2
+                        text: '0'
+                        font_size: 30
+                        readonly: True
+                        size_hint: 0.3, 1
+                        #pos_hint: {'x': 0, 'y': 0.25}
+                        multiline: False
+
+                    Button:
+                        text: '+'
+                        size_hint: 0.3, 1
+                        #pos_hint: {'x': 0, 'y': 0.25}
+                        on_press: root.increment_qtd(2)
+
+                        
+                    TextInput:
+                        id: preco_total_produto_2
+                        readonly: True
+                        multiline: False
+                        text: '0'
+                        font_size: 30
+                        #size_hint: 0.22, .33
+                        #pos_hint: {'center_x':1 , 'center_y':0.5}
+
+            # Produto 3
+            FloatLayout:
+                size_hint: 1, 0.25
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint: 1, 1
+                    height: self.minimum_height
+                    pos_hint: {'x': 0, 'y': 0}
+
+                    TextInput:
+                        id: nome_produto_3
+                        readonly: True
+                        multiline: False
+                        text: ''
+                        font_size: 30
+                        #size_hint: 0.22, .33
+                        #pos_hint: {'center_x':0 , 'center_y':0.5}
+
+                    TextInput:
+                        id: preco_produto_3
+                        readonly: True
+                        multiline: False
+                        text: ''
+                        font_size: 30
+                        #size_hint: 0.22, .33
+                        #pos_hint: {'center_x':0 , 'center_y':0.5}
+                    
+
+                    Button:
+                        text: '-'
+                        size_hint: 0.3, 1
+                        #pos_hint: {'x': 0, 'y': 0.25}
+                        on_press: root.decrement_qtd(3)
+                        
+                    TextInput:
+                        id: qtd_produto_3
+                        text: '0'
+                        font_size: 30
+                        readonly: True
+                        size_hint: 0.3, 1
+                        #pos_hint: {'x': 0, 'y': 0.25}
+                        multiline: False
+
+                    Button:
+                        text: '+'
+                        size_hint: 0.3, 1
+                        #pos_hint: {'x': 0, 'y': 0.25}
+                        on_press: root.increment_qtd(3)
+
+                        
+                    TextInput:
+                        id: preco_total_produto_3
+                        readonly: True
+                        multiline: False
+                        text: '0'
+                        font_size: 30
+                        #size_hint: 0.22, .33
+                        #pos_hint: {'center_x':1 , 'center_y':0.5}
+            BoxLayout:
+                size_hint: 1,0.2
+                orientation: 'vertical'
+                Button:
+                    id: add_to_cart_button
+                    text: 'Adicionar ao carrinho'
+                    size_hint: 1,.5
+                    pos_hint: {'center_x':0.5,'center_y':0.5}
+                    on_press: root.add_to_cart()
+
+                Button:
+                    id: clear_cart_button
+                    text: 'Limpar carrinho'
+                    size_hint: 1,.5
+                    pos_hint: {'center_x':0.5,'center_y':0.5}
+                    on_press: root.clear_shopping_cart()
+
+                Label:
+                    id: status_message
+                    text: ''
+                    size_hint: 1,.3
+
+                #FloatLayout:
+                #size_hint: 1,0.2
+
+                #Button:
+                    #id: add_to_cart_button
+                    #text: 'Adicionar ao carrinho'
+                    #size_hint: 1,.5
+                    #pos_hint: {'center_x':0.5,'center_y':0.5}
+                    #on_press: root.change_text('I')
+            
+            #FloatLayout:
+                #size_hint: 1,0.2
+
+                #Button:
+                    #id: clear_cart_button
+                    #text: 'Limpar carrinho'
+                    #size_hint: 1,.5
+                    #pos_hint: {'center_x':0.5,'center_y':0.5}
+                    #on_press: root.clear_shopping_cart()
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            pos_hint: {'bottom': 0}
+
+            Button:
+                background_normal: 'images/carrinho.png'
+                background_color: 0, 0, 0, 0
+                text: 'Carrinho'
+                size_hint: .1, 1
+                pos_hint: {'left': 0.6}
+                on_press: root.change_screen('shopping_cart')
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            pos_hint: {'top': 1}
+
+            Button:
+                background_normal: 'images/ajuda.png'
+                background_color: 0, 0, 0, 0
+                text: 'Ajuda'
+                size_hint: .1, 1
+                #on_press: root.change_screen('help')
+
+            Button:
+                id: balance_button
+                background_normal: 'images/saldo.png'
+                background_color: 0, 0, 0, 0
+                text: 'Saldo: $0.00'#f'Saldo: ${root.current_user_balance:.2f}'
+                size_hint: .1, 1
+                pos_hint: {'center_x': 0.5}
