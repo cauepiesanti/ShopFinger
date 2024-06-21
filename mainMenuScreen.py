@@ -11,8 +11,8 @@ class MainMenuScreen(Screen):
     def on_enter(self):
         self.init_balance()
         self.init_table()
-        # Atualizar o estoque a cada 5 segundos
-        #Clock.schedule_interval(self.update_table,5)
+        # Atualizar o saldo a cada 5 segundos
+        Clock.schedule_interval(self.update_balance,5)
 
     def init_table(self):
         self.update_all_names()
@@ -21,6 +21,7 @@ class MainMenuScreen(Screen):
 
     def update_table(self,dt):
         products_data.update_products_data()
+        self.init_table()
 
     def change_screen(self, screen_name):
         self.manager.current = screen_name
@@ -28,7 +29,10 @@ class MainMenuScreen(Screen):
     def increment_qtd(self, produto_id):
         quantidade_id = f'qtd_produto_{produto_id}'
         quantidade_input = self.ids[quantidade_id]
-        quantidade = int(quantidade_input.text) + 1
+        quantidade = int(quantidade_input.text)
+        estoque = products_data.get_product_stock(produto_id-1)
+        if(quantidade<estoque):
+            quantidade += 1
         quantidade_input.text = str(quantidade)
         self.update_price(produto_id,quantidade)
 
@@ -45,7 +49,7 @@ class MainMenuScreen(Screen):
         preco_id = f'preco_produto_{produto_id}'
         preco = float(self.ids[preco_id].text)
         preco_total_id = f'preco_total_produto_{produto_id}'
-        self.ids[preco_total_id].text = str(quantidade*preco)
+        self.ids[preco_total_id].text = "{:.2f}".format(quantidade*preco)
 
 
     def reset_text(self, dt):
@@ -57,8 +61,9 @@ class MainMenuScreen(Screen):
         self.update_status_message(text)
         Clock.schedule_once(self.reset_text, 2)
 
-    def update_balance(self, new_balance):
-        self.ids.balance_button.text = f'Saldo: ${new_balance:.2f}'
+    def update_balance(self,dt):
+        user_data.update_user_balance_from_db()
+        self.init_balance()
 
     def init_balance(self):
         balance = user_data.get_current_user_balance()
@@ -89,15 +94,26 @@ class MainMenuScreen(Screen):
         products_data.set_shoppingCart_product_price(2, preco_produto_3)
         products_data.set_shoppingCart_product_amount(2, qtd_produto_3)
 
+        # Atualizar o produto 4
+        nome_produto_4 = self.ids.nome_produto_4.text
+        preco_produto_4 = float(self.ids.preco_produto_4.text)
+        qtd_produto_4= int(self.ids.qtd_produto_4.text)
+        products_data.set_shoppingCart_product_name(3, nome_produto_4)
+        products_data.set_shoppingCart_product_price(3, preco_produto_4)
+        products_data.set_shoppingCart_product_amount(3, qtd_produto_4)
+
 
     def clear_shopping_cart(self):
         self.ids['qtd_produto_1'].text = str(0)
         self.ids['qtd_produto_2'].text = str(0)
         self.ids['qtd_produto_3'].text = str(0)
+        self.ids['qtd_produto_4'].text = str(0)
 
-        self.ids['preco_total_produto_1'].text = str(0)
-        self.ids['preco_total_produto_2'].text = str(0)
-        self.ids['preco_total_produto_3'].text = str(0)
+
+        self.ids['preco_total_produto_1'].text = "{:.2f}".format(0)
+        self.ids['preco_total_produto_2'].text = "{:.2f}".format(0)
+        self.ids['preco_total_produto_3'].text = "{:.2f}".format(0)
+        self.ids['preco_total_produto_4'].text = "{:.2f}".format(0)
 
         self.update_shopping_cart()
 
@@ -109,22 +125,26 @@ class MainMenuScreen(Screen):
         self.ids.nome_produto_1.text = products_data.get_product_name(0)
         self.ids.nome_produto_2.text = products_data.get_product_name(1)
         self.ids.nome_produto_3.text = products_data.get_product_name(2)
+        self.ids.nome_produto_4.text = products_data.get_product_name(3)
 
     def update_all_prices(self):
-        self.ids.preco_produto_1.text = str(products_data.get_product_price(0))
-        self.ids.preco_produto_2.text = str(products_data.get_product_price(1))
-        self.ids.preco_produto_3.text = str(products_data.get_product_price(2))
+        self.ids.preco_produto_1.text = "{:.2f}".format(products_data.get_product_price(0))
+        self.ids.preco_produto_2.text = "{:.2f}".format(products_data.get_product_price(1))
+        self.ids.preco_produto_3.text = "{:.2f}".format(products_data.get_product_price(2))
+        self.ids.preco_produto_4.text = "{:.2f}".format(products_data.get_product_price(3))
 
     def update_all_quantities(self):
         self.ids.qtd_produto_1.text = str(products_data.get_shoppingCart_product_amount(0))
         self.ids.qtd_produto_2.text = str(products_data.get_shoppingCart_product_amount(1))
         self.ids.qtd_produto_3.text = str(products_data.get_shoppingCart_product_amount(2))
+        self.ids.qtd_produto_4.text = str(products_data.get_shoppingCart_product_amount(3))
 
     def verify_empty_cart(self):
         qtd_1 = int(self.ids.qtd_produto_1.text)
         qtd_2 = int(self.ids.qtd_produto_2.text)
         qtd_3 = int(self.ids.qtd_produto_3.text)
-        if(qtd_1 == 0 and qtd_2 == 0 and qtd_3 == 0):
+        qtd_4 = int(self.ids.qtd_produto_4.text)
+        if(qtd_1 == 0 and qtd_2 == 0 and qtd_3 == 0 and qtd_4 ==0):
             return ('empty_cart')
         else:
             return ('not_empty_cart')

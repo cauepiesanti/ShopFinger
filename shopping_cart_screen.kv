@@ -169,6 +169,45 @@
                         text: '0'
                         font_size: 30
 
+            # Produto 4
+            FloatLayout:
+                id: product_4_row
+                size_hint: 1, 0.20
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint: 1, 1
+                    height: self.minimum_height
+                    pos_hint: {'x': 0, 'y': 0}
+
+                    TextInput:
+                        id: nome_produto_4
+                        readonly: True
+                        multiline: False
+                        text: ''
+                        font_size: 30
+
+                    TextInput:
+                        id: qtd_produto_4
+                        text: '0'
+                        font_size: 30
+                        readonly: True
+                        multiline: False 
+
+                    TextInput:
+                        id: preco_produto_4
+                        readonly: True
+                        multiline: False
+                        text: ''
+                        font_size: 30
+
+                    TextInput:
+                        id: preco_total_produto_4
+                        readonly: True
+                        multiline: False
+                        text: '0'
+                        font_size: 30
+
             # Valor total
             FloatLayout:
                 id: total_value_row
@@ -196,11 +235,21 @@
                         font_size: 30
 
             BoxLayout:
-                size_hint: 1, 0.6
+                size_hint: 1, 1
                 orientation: 'vertical'
+
+                Button:
+                    id: future_balance
+                    background_color: 0, 0, 0, 0
+                    text: 'Saldo após a compra: $0.00'
+                    font_size: 30
+                    size_hint: 1, .33
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
                 Button:
                     id: confrim_purchase_button
                     text: 'Confirmar compra'
+                    font_size: 30
                     size_hint: 1, .33
                     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                     on_press: root.confirm_purchase()
@@ -208,6 +257,7 @@
                 Button:
                     id: clear_cart_button
                     text: 'Limpar carrinho'
+                    font_size: 30
                     size_hint: 1, .33
                     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                     on_press: root.clear_shopping_cart()
@@ -215,6 +265,7 @@
                 Button:
                     id: back_button
                     text: 'Voltar'
+                    font_size: 30
                     size_hint: 1, .33
                     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                     on_press: root.change_screen('mainMenu')
@@ -224,7 +275,7 @@
                 orientation: 'vertical'
                 Label:
                     id: status_label
-                    text: 'Status Label'
+                    text: ''
                     font_size: 30
                     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
@@ -237,11 +288,15 @@
                 background_normal: 'images/ajuda.png'
                 background_color: 0, 0, 0, 0
                 text: 'Ajuda'
+                font_size: 30
                 size_hint: .1, 1
+                on_press: root.change_screen('helpBuy')
 
             Button:
                 id: balance_button
-                text: 'Saldo'
-                size_hint: .1, 1
                 background_normal: 'images/saldo.png'
+                font_size: 30
                 background_color: 0, 0, 0, 0
+                text: 'Saldo: $0.00'#f'Saldo: ${root.current_user_balance:.2f}'
+                size_hint: .1, 1
+                pos_hint: {'center_x': 0.5}

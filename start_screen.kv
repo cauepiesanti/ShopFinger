@@ -4,20 +4,31 @@
 
         Label:
             text: "Selecione a opção"
+            font_size: 30
         
         Button:
             text: 'Login com biometria'
+            font_size: 30
             on_press: root.change_screen('biometry_login')
 
         Button:
             text: 'Login caueps'
-            #on_press: root.change_screen('mainMenu')
+            font_size: 30
+            on_press: root.change_screen('mainMenu')
             on_press: root.login_caueps()
         
         Button:
             text: 'Cadastrar biometria'
+            font_size: 30
             on_press: root.change_screen('login')
-        
-        Label:
-            id: message_label
+
+        Button:
+            id: help_button
+            #background_normal: 'images/saldo.png'
+            background_color: 0, 0, 0, 0
+            text: 'Ajuda'
+            font_size: 30
+            #pos_hint: {'center_x': 0.5}
+            on_press: root.change_screen('help')
+    
 

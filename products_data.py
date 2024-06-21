@@ -19,10 +19,20 @@ products = [
         'name': '',
         'price': 0,
         'stock': 0
+    },
+    {
+        'name': '',
+        'price': 0,
+        'stock': 0
     }
 ]
 
 shopping_cart = [
+    {
+        'name': '',
+        'price': 0,
+        'amount': 0
+    },
     {
         'name': '',
         'price': 0,
@@ -107,8 +117,9 @@ def update_balance():
     product_1_cost = get_product_price(0) * get_shoppingCart_product_amount(0)
     product_2_cost = get_product_price(1) * get_shoppingCart_product_amount(1)
     product_3_cost = get_product_price(2) * get_shoppingCart_product_amount(2)
+    product_4_cost = get_product_price(3) * get_shoppingCart_product_amount(3)
 
-    total_cost = product_1_cost + product_2_cost + product_3_cost
+    total_cost = product_1_cost + product_2_cost + product_3_cost + product_4_cost
 
     new_balance = user_data.get_current_user_balance() - total_cost 
     
@@ -139,12 +150,14 @@ def update_stock():
     product_1_stock = get_product_stock(0) - get_shoppingCart_product_amount(0)
     product_2_stock = get_product_stock(1) - get_shoppingCart_product_amount(1)
     product_3_stock = get_product_stock(2) - get_shoppingCart_product_amount(2)
+    product_4_stock = get_product_stock(3) - get_shoppingCart_product_amount(3)
 
     product_1_name = get_product_name(0)
     product_2_name = get_product_name(1)
     product_3_name = get_product_name(2)
+    product_4_name = get_product_name(3)
 
-    if product_1_stock > 0 and product_2_stock > 0 and product_3_stock > 0:
+    if product_1_stock >= 0 and product_2_stock >= 0 and product_3_stock >=0 and product_4_stock>= 0:
         # Se o estoque for válido para todos os produtos
         try:
             print("Atualizando estoque no banco de dados...")
@@ -169,6 +182,13 @@ def update_stock():
             else:
                 print(f'Erro ao atualizar estoque de {product_3_name}. Status code: {response.status_code}')
 
+            response = requests.post(f'{server_url}/update_product_stock', json={'name': product_4_name,
+                                                                                  'stock': product_4_stock})
+            if response.status_code == 200:
+                print(f'Estoque de {product_4_name} atualizado com sucesso.')
+            else:
+                print(f'Erro ao atualizar estoque de {product_4_name}. Status code: {response.status_code}')
+
         except Exception as e:
             print(f'Erro ao conectar ao servidor: {e}')
             return 'server_error'
@@ -176,12 +196,14 @@ def update_stock():
         return 'stock_valid'
     else:
         stock_string = ''
-        if product_1_stock <= 0:
+        if product_1_stock < 0:
             stock_string += f'{product_1_name}/{get_product_stock(0)}    '
-        if product_2_stock <= 0:
+        if product_2_stock < 0:
             stock_string += f'{product_2_name}/{get_product_stock(1)}    '
-        if product_3_stock <= 0:
-            stock_string += f'{product_3_name}/{get_product_stock(2)}'
+        if product_3_stock < 0:
+            stock_string += f'{product_3_name}/{get_product_stock(2)}    '
+        if product_4_stock < 0:
+            stock_string += f'{product_4_name}/{get_product_stock(3)}'
 
         return stock_string
 

@@ -14,6 +14,9 @@ class LoginScreen(Screen):
 
     def change_screen(self,screen):
         self.manager.current = screen
+        self.ids.message_label.text = ''
+        self.ids.username_input.text = ''
+        self.ids.password_input.text = ''
 
     def signup(self, instance):
         self.manager.current = 'createUser'
@@ -47,6 +50,8 @@ class LoginScreen(Screen):
     def load_main_menu(self, dt):
         self.manager.current = 'register_biometry'
         self.ids.message_label.text = ''
+        self.ids.username_input.text = ''
+        self.ids.password_input.text = ''
         print(f"\n{user_data.get_current_user()}\n")
 
     def remove_spaces(self, text_input):

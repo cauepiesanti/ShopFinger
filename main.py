@@ -9,6 +9,8 @@ from loginScreen import LoginScreen
 from registerBiometryScreen import RegisterBiometryScreen
 from mainMenuScreen import MainMenuScreen  
 from shoppingCartScreen import ShoppingCartScreen
+from helpScreen import HelpScreen
+from helpBuyScreen import HelpBuyScreen
 from waitingScreen import WaitingScreen
 
 
@@ -21,6 +23,8 @@ class MyApp(App):
         sm.add_widget(RegisterBiometryScreen(name='register_biometry'))
         sm.add_widget(MainMenuScreen(name='mainMenu'))
         sm.add_widget(ShoppingCartScreen(name='shopping_cart'))
+        sm.add_widget(HelpScreen(name='help'))
+        sm.add_widget(HelpBuyScreen(name='helpBuy'))
         #sm.add_widget(WaitingScreen(name='waitingScreen'))
         
         return sm

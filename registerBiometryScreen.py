@@ -11,6 +11,7 @@ class RegisterBiometryScreen(Screen):
 
     def change_screen(self,screen):
         self.manager.current = screen
+        self.show_message('')
 
     def show_message(self, message):
         self.ids.status_label.text = message

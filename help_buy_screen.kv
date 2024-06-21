@@ -1,0 +1,29 @@
+<HelpBuyScreen>:
+    FloatLayout:
+        orientation: 'vertical'
+
+        Label:
+            text: 'Instruções de compra'
+            font_size: 35
+            size_hint: .33, .1
+            halign: 'center'
+            pos_hint: {'center_x': 0.5, 'top': 1}
+
+        TextInput:
+            text: 
+                "\n* Selecione os produtos e as quantidades desejadas.\n\n\n\n" \
+                "* Adicione ao carrinho.\n\n\n\n" \
+                "* Confirme a compra."
+
+            font_size: 40
+            size_hint: 1, .8
+            pos_hint: {'center_x': 0.5, 'top': 0.9}
+            multiline: True
+            readonly: True
+
+        Button:
+            text: 'Voltar'
+            font_size: 30
+            size_hint: 1, .1
+            pos_hint: {'center_x': 0.5, 'top': 0.1}
+            on_press: root.manager.current = 'mainMenu'  # Substitua 'start' pelo nome da tela anterior

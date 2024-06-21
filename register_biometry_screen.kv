@@ -8,18 +8,20 @@
         Label:
             id: status_label
             text: "Aguardando..."
-            font_size: '20sp'
-            size_hint_y: None
+            font_size: 45
+            size_hint: 1,.45
             height: self.texture_size[1] + 20
 
         Button:
             text: "Registrar Biometria"
-            size_hint_y: None
+            font_size: 30
+            size_hint: 1,.35
             height: 50
             on_press: root.register_fingerprint()
         
         Button:
             text: "Voltar"
-            size_hint_y: None
+            font_size: 30
+            size_hint: 1,.35
             height: 50
             on_press: root.change_screen('login')

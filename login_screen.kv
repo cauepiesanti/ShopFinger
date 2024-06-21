@@ -4,27 +4,33 @@
 
         Label:
             text: "Login"
+            font_size: 30
         
         TextInput:
             id: username_input
             hint_text: 'Usuário'
+            font_size: 30
             multiline: False
             on_text: root.remove_spaces(self)
         
         TextInput:
             id: password_input
             hint_text: 'Senha'
+            font_size: 30
             multiline: False
             password: True
             on_text: root.remove_spaces(self)
         
         Button:
             text: 'Login'
+            font_size: 30
             on_press: root.login(root)
 
         Button:
             text: 'Voltar'
+            font_size: 30
             on_press: root.change_screen('start')
         
         Label:
             id: message_label
+            font_size: 30

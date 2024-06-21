@@ -1,15 +1,23 @@
 <BiometryLoginScreen>:
     BoxLayout:
-        orientation: 'vertical'
-
-        Button:
-            text: 'Voltar'
-            on_press: root.change_screen('start')
+        orientation: 'vertical'    
 
         Label: 
             id: status_label
-            text: ''
+            text: 'Selecione a opção'
+            font_size: 30
+            size_hint: 1,.45    
 
         Button:
             text: 'Login com biometria'
+            size_hint: 1,.35
             on_press: root.fingerprint_login()
+
+        Button:
+            text: 'Voltar'
+            size_hint: 1,.35
+            on_press: root.change_screen('start')
+   
+
+        
+

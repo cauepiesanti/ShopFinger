@@ -1,0 +1,29 @@
+<HelpScreen>:
+    FloatLayout:
+        orientation: 'vertical'
+
+        Label:
+            text: 'Instruções de compra'
+            font_size: 35
+            size_hint: .33, .1
+            halign: 'center'
+            pos_hint: {'center_x': 0.5, 'top': 1}
+
+        TextInput:
+            text: 
+                "* Se já fez cadastro no APP e é sua primeira vez, cadastre\n" \
+                "  sua biometria e depois faça login com ela.\n\n\n\n\n" \
+                "* Caso não tenha feito cadastro no APP, cadastre-se.\n"
+
+            font_size: 35
+            size_hint: 1, .8
+            pos_hint: {'center_x': 0.5, 'top': 0.9}
+            multiline: True
+            readonly: True
+
+        Button:
+            text: 'Voltar'
+            font_size: 30
+            size_hint: 1, .1
+            pos_hint: {'center_x': 0.5, 'top': 0.1}
+            on_press: root.manager.current = 'start'  # Substitua 'start' pelo nome da tela anterior
