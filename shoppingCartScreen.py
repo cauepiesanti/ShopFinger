@@ -9,10 +9,14 @@ Builder.load_file('shopping_cart_screen.kv')
 
 class ShoppingCartScreen(Screen):
 
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        Clock.schedule_interval(self.update_balance,5)
+
     def on_enter(self):
         self.update_buy_list()
         self.init_balance()
-        Clock.schedule_interval(self.update_balance,5)
+        #Clock.schedule_interval(self.update_balance,5)
 
     def update_buy_list(self):
         self.ids.nome_produto_1.text = products_data.get_shoppingCart_product_name(0)
@@ -103,11 +107,15 @@ class ShoppingCartScreen(Screen):
         Clock.schedule_once(lambda dt: self.update_status_label('') , 2)
         mainMenu.update_shopping_cart()
 
-    def update_balance(self,dt):
-        user_data.update_user_balance_from_db()
-        self.init_balance()
+    #def update_balance(self,dt):
+        #user_data.update_user_balance_from_db()
+        #self.init_balance()
 
     def init_balance(self):
+        balance = user_data.get_current_user_balance()
+        self.ids.balance_button.text = f'Saldo: ${balance:.2f}'
+
+    def update_balance(self,dt):
         balance = user_data.get_current_user_balance()
         self.ids.balance_button.text = f'Saldo: ${balance:.2f}'
 

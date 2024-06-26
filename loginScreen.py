@@ -17,6 +17,9 @@ class LoginScreen(Screen):
         self.ids.message_label.text = ''
         self.ids.username_input.text = ''
         self.ids.password_input.text = ''
+    
+    def change_label_text(self,message):
+        self.ids.message_label.text = message
 
     def signup(self, instance):
         self.manager.current = 'createUser'
@@ -46,6 +49,7 @@ class LoginScreen(Screen):
             Clock.schedule_once(self.load_main_menu, 1)
         else:
             self.ids.message_label.text = 'Login falhou! Usuário ou senha inválidos.'
+            Clock.schedule_once(lambda dt: self.change_label_text(''),2)
         
     def load_main_menu(self, dt):
         self.manager.current = 'register_biometry'

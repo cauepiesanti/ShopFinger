@@ -8,11 +8,18 @@ Builder.load_file('main_menu_screen.kv')
 
 class MainMenuScreen(Screen):   
 
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        # Atualizar o saldo a cada 5 segundos
+        Clock.schedule_interval(self.update_balance,5)
+
+
+
     def on_enter(self):
         self.init_balance()
         self.init_table()
         # Atualizar o saldo a cada 5 segundos
-        Clock.schedule_interval(self.update_balance,5)
+        #Clock.schedule_interval(self.update_balance,5)
 
     def init_table(self):
         self.update_all_names()
